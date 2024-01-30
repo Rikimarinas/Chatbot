@@ -1,25 +1,32 @@
-document.getElementById('send').addEventListener('click', async function() {
-    const userInput = document.getElementById('userinput').value;
+document.getElementById('send').addEventListener('click', function() {
+    var userInput = document.getElementById('userinput').value;
     displayMessage(userInput, 'user');
 
-    // Aquí deberías procesar la entrada del usuario utilizando el modelo de TensorFlow.js
-    const response = await generateResponse(userInput);
+    // Generar una respuesta basada en el análisis simple de la entrada
+    var response = generateResponse(userInput);
     displayMessage(response, 'bot');
 
     document.getElementById('userinput').value = ''; // Limpiar la entrada
 });
 
-async function generateResponse(input) {
-    // Aquí cargarías tu modelo y procesarías la entrada del usuario
-    // Esto es un placeholder para tu lógica específica de modelo
-    return "Respuesta simulada basada en el modelo"; // Simula una respuesta
+function displayMessage(message, sender) {
+    var messagesContainer = document.getElementById('messages');
+    var messageDiv = document.createElement('div');
+    messageDiv.textContent = message;
+    messageDiv.className = sender;
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight; // Desplazar al último mensaje
 }
 
-function displayMessage(message, sender) {
-    const messagesContainer = document.getElementById('messages');
-    const messageDiv = document.createElement('div');
-    messageDiv.textContent = `${sender.toUpperCase()}: ${message}`;
-
-
-    return "Interesante, cuéntame más.";
+function generateResponse(input) {
+    input = input.toLowerCase();
+    if (input.includes("cómo estás")) {
+        return "Estoy bien, gracias por preguntar. ¿Y tú?";
+    } else if (input.includes("hola") || input.includes("buenos días")) {
+        return "¡Hola! ¿En qué puedo ayudarte hoy?";
+    } else if (input.includes("nombre")) {
+        return "Soy tu asistente virtual. ¿Cómo puedo asistirte?";
+    } else {
+        return "Lo siento, aún estoy aprendiendo y no sé cómo responder a eso.";
+    }
 }

@@ -2,19 +2,19 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Chatbot Avanzado en Navegador</title>
-    <link rel="stylesheet" href="estilos.css"> <!-- Referencia al archivo CSS -->
-    <script src="https://unpkg.com/compromise"></script>
+    <title>Chatbot Inteligente</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
 </head>
 <body>
 
 <div id="chatbox">
-    <textarea id="chatlog" cols="100" rows="20" readonly></textarea><br>
-    <input type="text" id="userinput" size="100">
-    <button onclick="processUserInput()">Enviar</button>
+    <div id="messages"></div>
+    <input type="text" id="userinput" placeholder="Escribe tu mensaje aquí..." autocomplete="off">
+    <button id="send">Enviar</button>
 </div>
 
-<script src="chatbot.js"></script> <!-- Referencia al archivo JavaScript -->
-
+<script src="chatbot.js"></script>
 </body>
 </html>
+
